@@ -38,6 +38,9 @@ To use this function to count words, you'll need to implement your own `map_f` a
 
 **Enter answer here**
 
+Since we are summing a word `n` times, the total operation runs `n-1` times, therefore the works is $O(n)$.
+Assuming parrelle implementation, the span is $O(long_2 n)$.
+
 
 5. Why are we going through all this trouble? Couldn't I just use this function to count words?
 
