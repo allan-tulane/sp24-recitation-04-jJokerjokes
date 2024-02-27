@@ -58,6 +58,7 @@ What is the problem that prevents us from easily parallelizing this solution?
 
 **Enter answer here**
 
+The data dependency. Each update to the counts dictionary depends on the current value associated with a term. In a parallel environment, without proper synchronization, we may end up with race conditions.
 
 ## Part 2: Sentiment analysis
 
