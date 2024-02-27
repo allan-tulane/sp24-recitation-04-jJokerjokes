@@ -6,10 +6,13 @@ from main import *
 def test_word_count_map():
     assert word_count_map('i am sam i am') == \
            [('i', 1), ('am', 1), ('sam', 1), ('i', 1), ('am', 1)]
-
+    assert word_count_map('i am sam you are') == \
+           [('i', 1), ('am', 1), ('sam', 1), ('you', 1), ('are',1)]
     
 def test_word_count_reduce():
     assert word_count_reduce(['i', [1,1,1]]) == ('i', 3)
+    assert word_count_reduce(['am', [1,1]]) == ('am', 2)
+    assert word_count_reduce(['sam', [1,1,1,1]]) == ('sam', 4)
 
 def test_word_count():
     assert run_map_reduce(word_count_map, word_count_reduce, ['i am sam i am', 'sam is ham']) == \
@@ -39,4 +42,11 @@ def test_sentiment():
     ]
     result = run_map_reduce(sentiment_map, word_count_reduce, docs)
     assert result == [('negative', 3), ('positive', 3)]
+    docs2 = [
+    'the service was good but the food was bad',
+    'a awesome place with a terrible ambiance',
+    'I had a great time with my friends'
+  ]
+    result = run_map_reduce(sentiment_map, word_count_reduce, docs2)
+    assert result == [('negative', 2),('positive', 3)]
 
